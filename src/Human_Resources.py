@@ -29,19 +29,20 @@ class EmployeeOfBank:
     def calculate_bonus(self):
         value = self._salary * 0.1
         if value > 1000:
-            value = 0
+            raise Exception("Your salary not permit to receive bonus, bonus is great than 1000")
         return value
     
+    def _is_director(self):
+        names_director = ["Leonardo José da Silva", "Maria Clara da Silva", "João Pedro da Silva"]
+        return self._salary >= 100000 and self._name in names_director
+
     @property
     def decrease_salary(self):
-        salary_actual = self._salary
-        name_director = self._name
-        if salary_actual >= 100000 and name_director == "Leonardo José da Silva":    
-            salary_after = salary_actual * 0.9
+        if self._is_director():    
+            salary_after = self._salary * 0.9
             print(salary_after)
 
         return salary_after
 
     def __str__(self):
         return f'Employee({self._name}, {self._birth_date}, {self._salary})'
-

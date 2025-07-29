@@ -1,0 +1,11 @@
+[run]
+source= ./src
+
+[report]
+exclude_lines = 
+    def __str__
+    def salary
+
+[html]
+directory=coverage_html_report
+
